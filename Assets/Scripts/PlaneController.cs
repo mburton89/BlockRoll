@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlaneController : MonoBehaviour {
 
@@ -10,7 +11,7 @@ public class PlaneController : MonoBehaviour {
 	public float targetAngle;
 	private Vector3 currentAngle;
 
-	public float speed = 0.1F;
+	public float speed;
 
 	public enum Direction{
 		Up,
@@ -26,6 +27,11 @@ public class PlaneController : MonoBehaviour {
 	public bool canGoRight;
 
 	public bool canMove;
+
+	public Button up;
+	public Button down;
+	public Button left;
+	public Button right;
 
 	void Start(){
 		currentAngle = transform.eulerAngles;
@@ -44,7 +50,7 @@ public class PlaneController : MonoBehaviour {
 //		}
 			
 		if (Input.GetKey(KeyCode.RightArrow)){
-			currentAngle = new Vector3(Mathf.LerpAngle(currentAngle.x, targetAngle, Time.deltaTime * 10), 0, currentAngle.z);
+			currentAngle = new Vector3(Mathf.LerpAngle(currentAngle.x, targetAngle, Time.deltaTime * speed), 0, currentAngle.z);
 		}
 
 //		else{
@@ -52,20 +58,20 @@ public class PlaneController : MonoBehaviour {
 //		} 
 
 		if (Input.GetKey(KeyCode.LeftArrow)){
-			currentAngle = new Vector3(Mathf.LerpAngle(currentAngle.x, -targetAngle, Time.deltaTime * 10), 0, currentAngle.z);
+			currentAngle = new Vector3(Mathf.LerpAngle(currentAngle.x, -targetAngle, Time.deltaTime * speed), 0, currentAngle.z);
 		} 
 		if (Input.GetKey(KeyCode.UpArrow)){
-			currentAngle = new Vector3(currentAngle.x, 0, Mathf.LerpAngle(currentAngle.z, targetAngle, Time.deltaTime * 10));
+			currentAngle = new Vector3(currentAngle.x, 0, Mathf.LerpAngle(currentAngle.z, targetAngle, Time.deltaTime * speed));
 		} 
 		if (Input.GetKey(KeyCode.DownArrow)){
-			currentAngle = new Vector3(currentAngle.x, 0, Mathf.LerpAngle(currentAngle.z, -targetAngle, Time.deltaTime * 10));
+			currentAngle = new Vector3(currentAngle.x, 0, Mathf.LerpAngle(currentAngle.z, -targetAngle, Time.deltaTime * speed));
 		}
 
 		if(!Input.anyKey){
 			currentAngle = new Vector3(
-				Mathf.LerpAngle(currentAngle.x, 0, Time.deltaTime * 20),
-				Mathf.LerpAngle(currentAngle.y, 0, Time.deltaTime * 20),
-				Mathf.LerpAngle(currentAngle.z, 0, Time.deltaTime * 20));
+				Mathf.LerpAngle(currentAngle.x, 0, Time.deltaTime * speed ),
+				Mathf.LerpAngle(currentAngle.y, 0, Time.deltaTime * speed ),
+				Mathf.LerpAngle(currentAngle.z, 0, Time.deltaTime * speed ));
 		}
 
 		transform.eulerAngles = currentAngle;

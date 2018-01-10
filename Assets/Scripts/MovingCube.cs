@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class MovingCube : MonoBehaviour {
@@ -24,6 +25,14 @@ public class MovingCube : MonoBehaviour {
 	public bool canMoveLeft;
 	public bool canMoveRight;
 
+	public bool canGoThruPortals;
+
+	public Button up;
+	public Button down;
+	public Button left;
+	public Button right;
+
+
 	void Awake(){
 		rigidBody = GetComponent<Rigidbody>();
 	}
@@ -38,6 +47,7 @@ public class MovingCube : MonoBehaviour {
 		// 重心の回転軌道半径を計算
 		radius = sideLength * Mathf.Sqrt (2f) / 2f;
 
+		canGoThruPortals = true;
 	}
 
 	// Update is called once per frame
@@ -68,10 +78,10 @@ public class MovingCube : MonoBehaviour {
 //		print("x" + Input.gyro.attitude.eulerAngles.x);
 //		print("Y" + Input.gyro.attitude.eulerAngles.y);
 //		print("Z" + Input.gyro.attitude.eulerAngles.z);
-
-		print("x" + Input.acceleration.x);
-		print("y" + Input.acceleration.y);
-		print("z" + Input.acceleration.z);
+//
+//		print("x" + Input.acceleration.x);
+//		print("y" + Input.acceleration.y);
+//		print("z" + Input.acceleration.z);
 
 		if(Input.acceleration.x < -.35f){
 			if(!canMoveLeft)return;
@@ -100,6 +110,10 @@ public class MovingCube : MonoBehaviour {
 			transform.rotation = fromRotation;											// CubeのRotationを回転前に戻す。（transformのシャローコピーとかできないんだろうか…。）
 			rotationTime = 0;															// 回転中の経過時間を0に。
 			isRotate = true;															// 回転中フラグをたてる。
+		}
+
+		if (transform.position.y < -25) {
+			PlayManager.Instance.HandleHazard();
 		}
 	}
 
@@ -165,6 +179,16 @@ public class MovingCube : MonoBehaviour {
 				directionZ = 0;
 				rotationTime = 0;
 			}
+		}
+	}
+
+	void OnTriggerEnter (Collider col){
+		if (col.GetComponent<PortalCube>()) {
+			PlayManager.Instance.HandlePortal(this, col);			
+		}else if (col.GetComponent<HazardCube>()) {
+			PlayManager.Instance.HandleHazard();			
+		}else if (col.GetComponent<MovingCubeCollisionDetector>()) {
+			PlayManager.Instance.HandleWin();			
 		}
 	}
 }
