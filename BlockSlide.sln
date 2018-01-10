@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockSlide", "Assembly-CSharp.csproj", "{67ADF69A-F25B-666F-4D3F-3FF985D40F87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67ADF69A-F25B-666F-4D3F-3FF985D40F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67ADF69A-F25B-666F-4D3F-3FF985D40F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67ADF69A-F25B-666F-4D3F-3FF985D40F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67ADF69A-F25B-666F-4D3F-3FF985D40F87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
