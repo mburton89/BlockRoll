@@ -33,11 +33,19 @@ public class PlaneController : MonoBehaviour {
 	public Button left;
 	public Button right;
 
+	public Camera camera;
+	public MovingCube movingCube;
+
+	public float xCameraPos;
+	public float yCameraPos;
+
 	void Start(){
 		currentAngle = transform.eulerAngles;
 	}
 	
 	void Update () {
+
+		camera.transform.localPosition = new Vector3(movingCube.transform.position.x + xCameraPos, yCameraPos, 10.5f);
 
 //		if (Input.GetKey(KeyCode.UpArrow)){
 //			currentAngle = new Vector3(Mathf.LerpAngle(currentAngle.x, targetAngle, Time.deltaTime * 10), 0, 0);

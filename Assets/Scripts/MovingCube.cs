@@ -82,7 +82,21 @@ public class MovingCube : MonoBehaviour {
 //		print("x" + Input.acceleration.x);
 //		print("y" + Input.acceleration.y);
 //		print("z" + Input.acceleration.z);
-
+//
+//		if(Input.acceleration.x < -.35f){
+//			if(!canMoveLeft)return;
+//			x = -1;
+//		}else if(Input.acceleration.x > .35f){
+//			if(!canMoveRight)return;
+//			x = 1;
+//		}else if(Input.acceleration.y < -.35f){
+//			if(!canMoveDown)return;
+//			y = -1;
+//		}else if(Input.acceleration.y > .35f){
+//			if(!canMoveUp)return;
+//			y = 1;
+//		}
+//
 		if(Input.acceleration.x < -.35f){
 			if(!canMoveLeft)return;
 			x = -1;
@@ -96,7 +110,6 @@ public class MovingCube : MonoBehaviour {
 			if(!canMoveUp)return;
 			y = 1;
 		}
-
 
 
 		// キー入力がある　かつ　Cubeが回転中でない場合、Cubeを回転する。
