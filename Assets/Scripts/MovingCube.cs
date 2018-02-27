@@ -27,11 +27,13 @@ public class MovingCube : MonoBehaviour {
 
 	public bool canGoThruPortals;
 
-	public Button up;
-	public Button down;
-	public Button left;
-	public Button right;
+	public UpButton up;
+	public UpButton down;
+	public UpButton left;
+	public UpButton right;
 
+	public float x;
+	public float y;
 
 	void Awake(){
 		rigidBody = GetComponent<Rigidbody>();
@@ -48,6 +50,13 @@ public class MovingCube : MonoBehaviour {
 		radius = sideLength * Mathf.Sqrt (2f) / 2f;
 
 		canGoThruPortals = true;
+
+		up = MoveButtons.Instance.Up;
+		down = MoveButtons.Instance.Down;
+		left = MoveButtons.Instance.Left;
+		right = MoveButtons.Instance.Right;
+
+		MoveButtons.Instance.MovingCubes.Add(this);
 	}
 
 	// Update is called once per frame
@@ -58,14 +67,20 @@ public class MovingCube : MonoBehaviour {
 		if(Input.GetKey(KeyCode.LeftArrow) && !canMoveLeft) return;
 		if(Input.GetKey(KeyCode.RightArrow) && !canMoveRight) return;
 
-		float x = 0;
-		float y = 0;
-
-		// キー入力を拾う。
-		x = Input.GetAxisRaw ("Horizontal");
-		if (x == 0) {
-			y = Input.GetAxisRaw ("Vertical");
-		}
+		if(up.isPressed && !canMoveUp) return;
+		if(down.isPressed && !canMoveDown) return;
+		if(left.isPressed && !canMoveLeft) return;
+		if(right.isPressed && !canMoveRight) return;
+//		x = 0;
+//		y = 0;
+//
+//		x = Input.GetAxisRaw ("Horizontal");
+//		if (x == 0) {
+//			y = Input.GetAxisRaw ("Vertical");
+//		}
+//
+//		print("x: " + x);
+//		print("y: " + y);
 
 //		if(x != 0){
 //			print("X: " + x);
@@ -97,19 +112,21 @@ public class MovingCube : MonoBehaviour {
 //			y = 1;
 //		}
 //
-		if(Input.acceleration.x < -.35f){
-			if(!canMoveLeft)return;
-			x = -1;
-		}else if(Input.acceleration.x > .35f){
-			if(!canMoveRight)return;
-			x = 1;
-		}else if(Input.acceleration.y < -.35f){
-			if(!canMoveDown)return;
-			y = -1;
-		}else if(Input.acceleration.y > .35f){
-			if(!canMoveUp)return;
-			y = 1;
-		}
+
+		//UNCOMMENT FOR TILT DEVICE
+//		if(Input.acceleration.x < -.35f){
+//			if(!canMoveLeft)return;
+//			x = -1;
+//		}else if(Input.acceleration.x > .35f){
+//			if(!canMoveRight)return;
+//			x = 1;
+//		}else if(Input.acceleration.y < -.35f){
+//			if(!canMoveDown)return;
+//			y = -1;
+//		}else if(Input.acceleration.y > .35f){
+//			if(!canMoveUp)return;
+//			y = 1;
+//		}
 
 
 		// キー入力がある　かつ　Cubeが回転中でない場合、Cubeを回転する。

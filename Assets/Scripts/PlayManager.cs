@@ -98,6 +98,7 @@ public class PlayManager : MonoBehaviour {
 
 	private IEnumerator DelayedLoadNextScene(){
 		yield return new WaitForSeconds(3f);
+		WinText.transform.localScale = Vector3.zero;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 }

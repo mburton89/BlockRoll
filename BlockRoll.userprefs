@@ -1,10 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MovingCube.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UpButton.cs">
     <Files>
-      <File FileName="Assets/Scripts/MovingCubeCollisionDetector.cs" Line="6" Column="2" />
-      <File FileName="Assets/Scripts/PlayManager.cs" Line="96" Column="3" />
-      <File FileName="Assets/Scripts/MovingCube.cs" Line="109" Column="4" />
+      <File FileName="Assets\Scripts\MoveButtons.cs" Line="25" Column="3" />
+      <File FileName="Assets\Scripts\PlaneController.cs" Line="8" Column="16" />
+      <File FileName="Assets\Scripts\UpButton.cs" Line="5" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
