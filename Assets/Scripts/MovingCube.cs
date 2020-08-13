@@ -62,10 +62,10 @@ public class MovingCube : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetKey(KeyCode.UpArrow) && !canMoveUp) return;
-		if(Input.GetKey(KeyCode.DownArrow) && !canMoveDown) return;
-		if(Input.GetKey(KeyCode.LeftArrow) && !canMoveLeft) return;
-		if(Input.GetKey(KeyCode.RightArrow) && !canMoveRight) return;
+		if((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && !canMoveUp) return;
+		if((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && !canMoveDown) return;
+		if((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && !canMoveLeft) return;
+		if((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))&& !canMoveRight) return;
 
 		if(up.isPressed && !canMoveUp) return;
 		if(down.isPressed && !canMoveDown) return;

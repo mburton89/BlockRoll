@@ -40,7 +40,29 @@ public class MoveButtons : MonoBehaviour {
 			PlaneController.Instance.TiltEven();
 			StopCubes();
 		}
-	}
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            PlaneController.Instance.TiltUp();
+            MoveCubesUp();
+        }
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            PlaneController.Instance.TiltDown();
+            MoveCubesDown();
+        }
+
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            PlaneController.Instance.TiltLeft();
+            MoveCubesLeft();
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            PlaneController.Instance.TiltRight();
+            MoveCubesRight();
+        }
+    }
 
 	public void MoveCubesUp(){
 		foreach (MovingCube cube in MovingCubes){
